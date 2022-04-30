@@ -44,3 +44,20 @@ function roundPlay(userSelect, compSelect) {
     }
   }
 }
+
+// Main program
+function game() {
+  let user = 0;
+  let comp = 0;
+  for (let i = 0; i < 5; i++) {
+    const winner = roundPlay(userPlay(), computerPlay());
+    winner === 1 ? user++ : winner === 2 ? comp++ : null
+  }
+
+  if (user > comp) {
+    console.log(`User wins ${user} - ${comp}`)
+  } else {
+    console.log(`Comp wins ${comp} - ${user}`)
+  }
+
+}
