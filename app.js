@@ -4,7 +4,10 @@ const options = ["SCISSORS", "ROCK", "PAPER"];
 
 // User Selection
 function userPlay() {
-  const input = prompt("Choose Rock , Paper , Scissors?", "rock").toUpperCase()
+  let input;
+  do {
+    input = prompt("Choose Rock , Paper , Scissors?", "rock").toUpperCase()
+  } while (options.indexOf(input) === -1)
   console.log(`User played ${input}, ${options.indexOf(input)}`);
   return options.indexOf(input);
 }
