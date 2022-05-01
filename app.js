@@ -62,5 +62,7 @@ function game() {
   } else {
     console.log(`Comp wins ${comp} - ${user}`)
   }
-
 }
+
+// Run program
+game()
