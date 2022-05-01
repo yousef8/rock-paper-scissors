@@ -14,7 +14,7 @@ No need for any installation just double click the [index.html](./index.html) fi
 
 ## Usage
 
-Please notice that all game results and communication happens in the console for now (will change soo.)
+Please notice that all game results and communication happens in the console for now (will change soon)
 
 ## Adding new features of fixing bugs
 
