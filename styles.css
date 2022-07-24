@@ -1,0 +1,118 @@
+:root {
+  --background-color: #f8ffa8;
+}
+
+/* Initial Configuration */
+*,
+*::before,
+*::after {
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+}
+
+/* Begin Styling */
+/* Container holding everything */
+.container {
+  background-color: var(--background-color);
+  height: 100vh;
+  display: flex;
+  flex-flow: column wrap;
+  justify-content: space-evenly;
+}
+
+/* ------------Board area----------- */
+.board-area {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.board-area .score-board {
+  min-width: 250px;
+  background-color: white;
+  border: 2.5px solid black;
+  border-radius: 5px;
+  text-align: center;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 50px 1fr;
+  justify-items: stretch;
+}
+
+.board-area .score-board .computer,
+.board-area .score-board .user {
+  align-self: center;
+}
+
+.board-area .score-board .user-score,
+.board-area .score-board .computer-score {
+  min-height: 100px;
+  font-size: 50px;
+  align-self: center;
+}
+
+/* -----------------Info Part------------ */
+.info {
+  min-height: 6rem;
+  text-align: center;
+  line-height: 6rem;
+}
+/* ------------Play Ground------------- */
+.playground {
+  display: flex;
+  justify-content: center;
+}
+
+.playground .text {
+  padding: 1rem;
+  text-align: center;
+}
+
+.playground .choices div {
+  margin: 2rem;
+}
+
+.playground .choices div i {
+  font-size: 3rem;
+}
+
+/* ------------User Selection------------- */
+.playground .user-selection {
+  flex: 1 1 auto;
+}
+
+.playground .user-selection .choices > div {
+  width: fit-content;
+}
+
+/* -----------Computer Selection---------- */
+.playground .computer-selection {
+  flex: 1 1 auto;
+  display: flex;
+  flex-flow: column;
+}
+
+.playground .computer-selection .choices {
+  align-self: flex-end;
+}
+
+/* ---------------Choices---------------------- */
+.choices div {
+  transition: transform 0.5s ease-in-out;
+}
+
+.user-selection .choices div:hover {
+  transform: translateX(3rem);
+}
+
+.computer-selection .choices div:hover {
+  transform: translateX(-3rem);
+}
+
+.user-choice {
+  transform: translateX(10rem);
+}
+
+.computer-choice {
+  transform: translateX(-10rem);
+}
