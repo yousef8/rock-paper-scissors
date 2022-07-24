@@ -23,7 +23,7 @@ function computerPlay() {
 }
 
 // One round of play
-function roundPlay(userSelect, compSelect) {
+function playRound(userSelect, compSelect) {
   // Tie case
   if (userSelect === compSelect) {
     console.log("It's a tie. No one wins")
@@ -53,7 +53,7 @@ function game() {
   let user = 0;
   let comp = 0;
   for (let i = 0; i < 5; i++) {
-    const winner = roundPlay(userPlay(), computerPlay());
+    const winner = playRound(userPlay(), computerPlay());
     winner === 1 ? user++ : winner === 2 ? comp++ : null
   }
 

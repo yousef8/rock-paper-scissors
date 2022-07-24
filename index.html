@@ -4,9 +4,74 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Font Awesome Kit -->
+    <script
+      src="https://kit.fontawesome.com/0f4b56f4a5.js"
+      crossorigin="anonymous"
+    ></script>
+
+    <script src="app.js" defer></script>
+
     <title>Rock Paper Scissors</title>
   </head>
+
   <body>
-    <script src="app.js"></script>
+    <div class="container">
+      <div class="board-area">
+        <div class="score-board">
+          <div class="user">
+            <h2>User</h2>
+          </div>
+
+          <div class="computer">
+            <h2>Computer</h2>
+          </div>
+
+          <div class="user-score"></div>
+
+          <div class="computer-score"></div>
+        </div>
+
+        <div class="round-board">
+          <div class="count">
+            <h2>Count</h2>
+          </div>
+          <div class="winner">
+            <h2>Winner</h2>
+          </div>
+        </div>
+      </div>
+
+      <div class="playground-area">
+        <div class="user-selection">
+          <div class="rock">
+            <i class="fa-solid fa-hand-back-fist"></i>
+          </div>
+
+          <div class="paper">
+            <i class="fa-solid fa-hand"></i>
+          </div>
+
+          <div class="scissor">
+            <i class="fa-solid fa-hand-scissors"></i>
+          </div>
+        </div>
+
+        <div class="computer-selection">
+          <div class="rock">
+            <i class="fa-solid fa-hand-back-fist"></i>
+          </div>
+
+          <div class="paper">
+            <i class="fa-solid fa-hand"></i>
+          </div>
+
+          <div class="scissor">
+            <i class="fa-solid fa-hand-scissors"></i>
+          </div>
+        </div>
+      </div>
+    </div>
   </body>
 </html>
