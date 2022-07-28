@@ -102,11 +102,11 @@
 }
 
 .user-selection .choices div:hover {
-  transform: translateX(3rem);
+  transform: scale(2);
 }
 
 .computer-selection .choices div:hover {
-  transform: translateX(-3rem);
+  transform: scale(2);
 }
 
 .user-choice {

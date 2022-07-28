@@ -1,68 +1,119 @@
-// Array of available options
-//                   0         1        2
-const options = ["SCISSORS", "ROCK", "PAPER"];
+window.onload = main;
 
-// User Selection
-function userPlay() {
-  let input;
-  do {
-    input = prompt("Choose Rock , Paper , Scissors?", "rock").toUpperCase()
-  } while (options.indexOf(input) === -1)
-  console.log(`User played ${input}, ${options.indexOf(input)}`);
-  return options.indexOf(input);
-}
+let userScore = 0;
+let compScore = 0;
 
-// Computer selection
-function computerPlay() {
-  // Get random number between 1 and 3
-  const selection = Math.floor(Math.random() * 3);
+function main() {
+  const choices = document.querySelector("div.user-selection div.choices");
+  choices.addEventListener("click", (e) => {
+    let choice = e.target.closest("div");
+    let winner = playRound(choice);
+    updateScore(winner);
+    updateBoard(userScore, compScore);
 
-  console.log(`Computer played ${options[selection]}, ${selection}`);
-
-  return selection;
-}
-
-// One round of play
-function playRound(userSelect, compSelect) {
-  // Tie case
-  if (userSelect === compSelect) {
-    console.log("It's a tie. No one wins")
-    // Case of Scissors vs. Paper
-  } else if ((userSelect || compSelect) === 0 && (userSelect || compSelect) === 2) {
-    if (userSelect === 0 && compSelect === 2) {
-      console.log("User wins");
-      return 1;
-    } else {
-      console.log("Computer wins");
-      return 2;
+    if (userScore === 5 || compScore === 5) {
+      prompt("Winner is " + userScore);
     }
-    // Case Paper beats Rock beats Scissors
-  } else {
-    if (userSelect > compSelect) {
-      console.log("User wins");
-      return 1;
-    } else {
-      console.log("Computer wins");
-      return 2;
-    }
+  });
+}
+
+function playRound(choice) {
+  let userChoice = choice.getAttribute("data-type");
+  if (!userChoice) {
+    return;
+  }
+
+  console.log("User played " + userChoice);
+
+  let compChoice = getCompChoice();
+  console.log("Comp played " + compChoice);
+
+  let winner = getWinner(userChoice, compChoice);
+  console.log("Winner is " + winner);
+
+  updateInfoSection(winner);
+
+  return winner;
+}
+
+function getCompChoice() {
+  const choices = {
+    0: "ROCK",
+    1: "PAPER",
+    2: "SCISSOR",
+  };
+
+  let randomNumber = Math.floor(Math.random() * 3);
+  return choices[randomNumber];
+}
+
+function getWinner(userChoice, compChoice) {
+  if (userChoice === compChoice) {
+    return "TIE";
+  }
+
+  if (
+    (userChoice === "ROCK" && compChoice === "PAPER") ||
+    (userChoice === "PAPER" && compChoice === "SCISSOR") ||
+    (userChoice === "SCISSOR" && compChoice === "ROCK")
+  ) {
+    return "COMPUTER";
+  }
+
+  if (
+    (compChoice === "ROCK" && userChoice === "PAPER") ||
+    (compChoice === "PAPER" && userChoice === "SCISSOR") ||
+    (compChoice === "SCISSOR" && userChoice === "ROCK")
+  ) {
+    return "USER";
   }
 }
 
-// Main program
-function game() {
-  let user = 0;
-  let comp = 0;
-  for (let i = 0; i < 5; i++) {
-    const winner = playRound(userPlay(), computerPlay());
-    winner === 1 ? user++ : winner === 2 ? comp++ : null
+function updateInfoSection(winner) {
+  let info = document.querySelector(".info p");
+  let text = "";
+
+  if (winner === "TIE") {
+    text = "IT'S A TIE";
+  } else if (winner === "USER") {
+    text = "USER WINS";
+  } else {
+    text = "COMPUTER WINS";
   }
 
-  if (user > comp) {
-    console.log(`User wins ${user} - ${comp}`)
-  } else {
-    console.log(`Comp wins ${comp} - ${user}`)
+  info.textContent = text;
+}
+
+function updateScore(winner) {
+  if (winner === "TIE") {
+    return;
+  }
+
+  if (winner === "USER") {
+    userScore++;
+  }
+
+  if (winner === "COMPUTER") {
+    compScore++;
   }
 }
 
-// Run program
-game()
+function updateBoard(userScore, compScore) {
+  let user = document.querySelector(".score-board .user-score");
+  let comp = document.querySelector(".score-board .computer-score");
+  user.textContent = userScore;
+  comp.textContent = compScore;
+}
+
+function endGame() {
+  // Reset Scores
+  userScore = 0;
+  compScore = 0;
+
+  // Wipe the board
+  updateBoard();
+
+  // Wipe the info section
+  let info = document.querySelector(".info p");
+  info.textContent = "";
+}
