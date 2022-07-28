@@ -12,8 +12,31 @@ function main() {
     updateBoard(userScore, compScore);
 
     if (userScore === 5 || compScore === 5) {
-      prompt("Winner is " + userScore);
+      // show win-lose page
+      if (userScore === 5) {
+        const winPage = document.querySelector(".win-page");
+        winPage.classList.remove("hidden");
+      }
+
+      if (compScore === 5) {
+        const losePage = document.querySelector(".lose-page");
+        losePage.classList.remove("hidden");
+      }
     }
+  });
+
+  const winButton = document.querySelector(".win-page button");
+  winButton.addEventListener("click", (e) => {
+    startNewGame();
+    const winPage = document.querySelector(".win-page");
+    winPage.classList.add("hidden");
+  });
+
+  const loseButton = document.querySelector(".lose-page button");
+  loseButton.addEventListener("click", (e) => {
+    startNewGame();
+    const losePage = document.querySelector(".lose-page");
+    losePage.classList.add("hidden");
   });
 }
 
@@ -105,7 +128,7 @@ function updateBoard(userScore, compScore) {
   comp.textContent = compScore;
 }
 
-function endGame() {
+function startNewGame() {
   // Reset Scores
   userScore = 0;
   compScore = 0;
